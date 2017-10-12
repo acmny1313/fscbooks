@@ -1,0 +1,58 @@
+
+<html>
+<head>
+	<title>FSCBOOKS</title>
+	<link rel="stylesheet" type = "text/css" href = "globalStyles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<header>
+		<h1>FSCBOOK Exchange</h1>
+		<h3>A place to exchange books</h3>
+	</header>
+	<nav class = "navBar">
+		<a class="home" href="index.html"><img src = "home.png"></a>
+		<a class="search" href = "browse.html"><img src = "browse.png"></a>
+		<a class="login" href= "login.html"><img src = "login.png"></a>
+		<a class = "signup" href = "signUp.html"><img src = "signUp.png"></a>
+		<a class = "profile" href = "profile.html"><img src = "profile.png"></a>
+		<a class="logout" href="logout.php"><img src = "logout.png"></img></a>
+	</nav>
+<section class = "login">
+	<h3>Welcome back please log in.</h3>
+
+	<form id="login">
+		Email: <input type="email" name="email" ><br>
+		Password: <input type="text" name="password" ><br>
+	<input type="button" onclick="myFunction()" value="Submit">
+	<input type="reset" onclick="myFunction()" value="Reset">
+</form>
+
+<ul id = "user"></ul>
+<script>
+function myFunction() {
+	//var email = document.getElementsByName("email")[0].value;
+	//var password = document.getElementsByName("password")[0].value;
+
+// "https://uinames.com/api/?region=united%20states";
+//"http://fscbooks.win:10050/api/select?email=AaronCarpenter@gmail.com";
+	$.ajax({
+	 	dataType: "text",
+		url: "http://fscbooks.win:10050/api/select?email=AaronCarpenter@gmail.com",
+		success : function(data) {
+		//Parse JSON file
+		//var json = $.parseJSON(data);
+		//Store data into a variable
+		window.alert(data)
+	},
+		error: function(data){
+			window.alert("Error.")
+		}
+})
+}
+
+</script>
+</section>
+</body>
+</html>

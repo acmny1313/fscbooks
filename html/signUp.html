@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title>FSCBOOKS</title>
+	<link rel="stylesheet" type = "text/css" href = "globalStyles.css">
+
+</head>
+<body>
+
+<header>
+	<h1>FSCBOOK Exchange</h1>
+	<h3>A place to exchange books</h3>
+</header>
+<nav class = "navBar">
+	<a class="home" href="index.html"><img src = "home.png"></a>
+	<a class="search" href = "browse.html"><img src = "browse.png"></a>
+	<a class="login" href= "login.html"><img src = "login.png"></a>
+	<a class = "signup" href = "signUp.html"><img src = "signUp.png"></a>
+	<a class = "profile" href = "profile.html"><img src = "profile.png"></a>
+	<a class="logout" href="logout.php"><img src = "logout.png"></img></a>
+</nav>
+<section class = "signup">
+	<h3>Welcome please create an account.</h3>
+	<form id="frm1">
+		Email: <input type="email" name="email"><br>
+		First name: <input type="text" name="fname"><br>
+		Last name: <input type="text" name="lname"><br>
+		Password: <input type="text" name="password"><br>
+		Year: <select name="year" form="frm1">
+				<option value="SelectOpt">Select a year</option>
+				<option value="Freshman">Freshman</option>
+				<option value="Sophmore">Sophmore</option>
+				<option value="Junior">Junior</option>
+				<option value="Senior">Senior</option>
+				</select>
+				<br>
+	<input type="button" onclick="myFunction()" value="Submit">
+</form>
+
+<script>
+function myFunction() {
+
+	var email = document.getElementsByName("email")[0].value;
+	var firstName = document.getElementsByName("fname")[0].value;
+    var lastName = document.getElementsByName("lname")[0].value;
+	var pasword = document.getElementsByName("password")[0].value;
+	var year = document.getElementsByName("year")[0].value;
+
+	/*var xhr = new XMLHttpRequest();
+	xhr.open("GET", "http://fscbooks.win:10050/api/insert?email=ryan@aim.com&firstname=ryan&lastname=felt&password=chips&year=senior", false);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send();
+  //response = JSON.parse(xhttp.responseText);*/
+  window.alert(email);
+	window.alert(firstName);
+}
+</script>
+
+
+	</form>
+</section>
+
+</body>
+</html>

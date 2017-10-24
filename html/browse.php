@@ -1,5 +1,10 @@
 <!doctype html>
+<?php
 
+   include('session.php');
+
+
+?>
 <html>
 <head>
 	<title>FSCBOOKS</title>
@@ -11,6 +16,10 @@
 </head>
 <body>
 
+  <header class="w3-container w3-teal w3-center" style="padding:25px 16px">
+	<h1>FSCBOOK Exchange</h1>
+	<h3>A place to exchange books</h3>
+</header>
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-teal w3-card-2 w3-left-align w3-large">
@@ -23,7 +32,7 @@
 		<a href="Profile" class="w3-bar-item w3-button w3-padding-large">Profile</a>
 			<div class="w3-dropdown-content w3-bar-block w3-border">
 			<a href="Profile" class="w3-bar-item w3-button w3-padding-large">Profile</a>
-				<a class="w3-bar-item w3-button" href= "Login.html">Login</a>
+				<a class="w3-bar-item w3-button" href= "Login">Login</a>
 				<a class = "w3-bar-item w3-button" href = "SignUp">Sign Up</a>
 				<a class="w3-bar-item w3-button" href="Logout">Log Out</a>
 			</div>
@@ -38,44 +47,14 @@
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
   </div>
 </div>
-
-<!-- Header -->
-<header class="w3-container w3-teal w3-center" style="padding:25px 16px">
-  <h1 class="w3-margin w3-jumbo">FSC BOOKS</h1>
-  <p class="w3-xlarge">Welcome!</p>
-  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Register</button>
-</header>
-
-<section class = "login">
-  <h3> Welcome to the book exchange  <?php echo $login_session; ?></h3>
-	<h3>Please log in.</h3>
-
-	<form action="Login.php" method="POST" id="login">
-		Email: <br>
-    <input type="email" name="email" required><br>
-		Password: <br>
-    <input type="password" name="password" required><br>
-	<input type="submit" value="Submit">
-	<input type="reset"  value="Reset">
-</form>
+<section class = "browse">
+	<h3> Here you can search for books to purchase or trade.<?php echo $login_session; ?></h3>
 </section>
+
 <!-- Footer -->
 <footer  class="w3-container w3-padding-32 w3-teal w3-center ">
 
  <p>Powered by Senior Projects Group #1</p>
 </footer>
-
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-    var x = document.getElementById("navDemo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
-</script>
-
 </body>
 </html>

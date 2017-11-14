@@ -32,7 +32,7 @@
 		<a href="Profile" class="w3-bar-item w3-button w3-padding-large">Profile</a>
 			<div class="w3-dropdown-content w3-bar-block w3-border">
 			<a href="Profile" class="w3-bar-item w3-button w3-padding-large">Profile</a>
-				<a class="w3-bar-item w3-button" href= "Login">Login.html</a>
+				<a class="w3-bar-item w3-button" href= "Login">Login</a>
 				<a class = "w3-bar-item w3-button" href = "SignUp">Sign Up</a>
 				<a class="w3-bar-item w3-button" href="Logout">Log Out</a>
 			</div>
@@ -48,8 +48,48 @@
   </div>
 </div>
 
-<section class = "browse">
-	<h3> Here you can search for books to purchase or trade.</h3>
-</section>
-</body>
+
+<?php
+if( isset($_SESSION['Error']) )
+{
+        echo $_SESSION['Error'];
+
+        unset($_SESSION['Error']);
+
+}
+?>
+<?php
+include('db.php');
+
+	$isbn = stripslashes($_POST['isbn']);
+	$isbn = mysqli_real_escape_string($con,$isbn);
+
+	$title = stripslashes($_POST['title']);
+	$title = mysqli_real_escape_string($con,$title);
+
+  $author = stripslashes($_POST['author']);
+	$author = mysqli_real_escape_string($con,$author);
+
+  $edition = stripslashes($_POST['edition']);
+	$edition = mysqli_real_escape_string($con,$edition);
+
+  $department = stripslashes($_POST['department']);
+	$department = mysqli_real_escape_string($con,$department);
+
+  $courseNumber = stripslashes($_POST['courseNumber']);
+  $courseNumber = mysqli_real_escape_string($con,$courseNumber);
+
+	$sql = "INSERT into book(isbn,title,author,edition,department,courseNumber)
+  VALUES('$isbn','$title','$author','$edition','$department','$courseNumber');";
+
+  if(mysqli_query($con,$sql)){
+    echo "new book added.";
+
+  }else{
+    echo "$department ::Book not added." . $sql . "<br>" . mysqli_error($con);
+  }
+?>
+
+   </body>
+
 </html>

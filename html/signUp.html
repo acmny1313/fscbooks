@@ -1,64 +1,80 @@
 <!doctype html>
+
 <html>
 <head>
 	<title>FSCBOOKS</title>
 	<link rel="stylesheet" type = "text/css" href = "globalStyles.css">
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 <body>
 
-<header>
+  <header class="w3-container w3-teal w3-center" style="padding:25px 16px">
 	<h1>FSCBOOK Exchange</h1>
 	<h3>A place to exchange books</h3>
 </header>
-<nav class = "navBar">
-	<a class="home" href="index.html"><img src = "home.png"></a>
-	<a class="search" href = "browse.html"><img src = "browse.png"></a>
-	<a class="login" href= "login.html"><img src = "login.png"></a>
-	<a class = "signup" href = "signUp.html"><img src = "signUp.png"></a>
-	<a class = "profile" href = "profile.html"><img src = "profile.png"></a>
-	<a class="logout" href="logout.php"><img src = "logout.png"></img></a>
-</nav>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-teal w3-card-2 w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="Home" class="w3-bar-item w3-button w3-padding-large ">Home</a>
+    <a href="Browse" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Browse</a>
+
+	<div class="w3-dropdown-hover">
+
+		<a href="Profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
+			<div class="w3-dropdown-content w3-bar-block w3-border">
+			<a href="Profile" class="w3-bar-item w3-button w3-padding-large">Profile</a>
+				<a class="w3-bar-item w3-button" href= "Login.html">Login</a>
+				<a class = "w3-bar-item w3-button" href = "SignUp.html">Sign Up</a>
+				<a class="w3-bar-item w3-button" href="Logout">Log Out</a>
+			</div>
+	</div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
+  </div>
+</div>
+
 <section class = "signup">
 	<h3>Welcome please create an account.</h3>
-	<form id="frm1">
-		Email: <input type="email" name="email"><br>
-		First name: <input type="text" name="fname"><br>
-		Last name: <input type="text" name="lname"><br>
-		Password: <input type="text" name="password"><br>
+
+	<form action="insertNewPerson" method="POST" id="frm1">
+		Email: <br>
+		<input type="email" name="mail" required><br>
+		First name:<br>
+		<input type="text" name="fname" required><br>
+		Last name:<br>
+		<input type="text" name="lname" required><br>
+		Password: <br>
+		<input type="password" name="pswd"required><br><br>
 		Year: <select name="year" form="frm1">
-				<option value="SelectOpt">Select a year</option>
+				<option value="null"disabled required>Select a year</option>
 				<option value="Freshman">Freshman</option>
-				<option value="Sophmore">Sophmore</option>
+				<option value="Sophomore">Sophomore</option>
 				<option value="Junior">Junior</option>
 				<option value="Senior">Senior</option>
 				</select>
-				<br>
-	<input type="button" onclick="myFunction()" value="Submit">
+				<br><br>
+	<input type="submit"  value="Submit">
+	<input type="reset"  value="Reset">
 </form>
 
-<script>
-function myFunction() {
 
-	var email = document.getElementsByName("email")[0].value;
-	var firstName = document.getElementsByName("fname")[0].value;
-    var lastName = document.getElementsByName("lname")[0].value;
-	var pasword = document.getElementsByName("password")[0].value;
-	var year = document.getElementsByName("year")[0].value;
-
-	/*var xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://fscbooks.win:10050/api/insert?email=ryan@aim.com&firstname=ryan&lastname=felt&password=chips&year=senior", false);
-  xhttp.setRequestHeader("Content-type", "application/json");
-  xhttp.send();
-  //response = JSON.parse(xhttp.responseText);*/
-  window.alert(email);
-	window.alert(firstName);
-}
-</script>
-
-
-	</form>
 </section>
+
+<!-- Footer -->
+<footer  class="w3-container w3-padding-32 w3-teal w3-center ">
+
+ <p>Powered by Senior Projects Group #1</p>
+</footer>
 
 </body>
 </html>

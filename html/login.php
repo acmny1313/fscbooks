@@ -1,4 +1,11 @@
-<!doctype html>
+<?php
+	 session_start();
+   //include('session.php');
+	if(isset($_SESSION['login_user'])){
+      header("location: Profile");
+    }
+
+?>
 
 <html>
 <head>
@@ -11,11 +18,15 @@
 </head>
 <body>
 
+  <header class="w3-container w3-teal w3-center" style="padding:25px 16px">
+	<h1>FSCBOOK Exchange</h1>
+	<h3>A place to exchange books</h3>
+</header>
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-teal w3-card-2 w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="Home" class="w3-bar-item w3-button w3-padding-large w3-white w3-hover-white">Home</a>
+    <a href="Home" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
     <a href="Browse" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Browse</a>
 
 	<div class="w3-dropdown-hover">
@@ -24,7 +35,7 @@
 			<div class="w3-dropdown-content w3-bar-block w3-border">
 			<a href="Profile" class="w3-bar-item w3-button w3-padding-large">Profile</a>
 				<a class="w3-bar-item w3-button" href= "Login.html">Login</a>
-				<a class = "w3-bar-item w3-button" href = "SignUp.html">Sign Up</a>
+				<a class = "w3-bar-item w3-button" href = "SignUp">Sign Up</a>
 				<a class="w3-bar-item w3-button" href="Logout">Log Out</a>
 			</div>
 	</div>
@@ -38,33 +49,58 @@
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
   </div>
 </div>
-
-<!-- Header -->
-<header class="w3-container w3-teal w3-center" style="padding:25px 16px">
-  <h1 class="w3-margin w3-jumbo">FSC BOOKS</h1>
-  <p class="w3-xlarge">Welcome!</p>
-  <a href = "SignUp.html" class="w3-button w3-grey w3-padding-large w3-large w3-margin-top">Register</a>
-</header>
-
 <section class = "login">
-  <h3> Welcome to the book exchange  <?php echo $login_session; ?></h3>
-	<h3>Please log in.</h3>
+ <h3>Welcome back please log in.</h3>
+<?php
+include('db.php');
 
-	<form action="Login.php" method="POST" id="login">
-		Email: <br>
-    <input type="email" name="email" required><br>
-		Password: <br>
-    <input type="password" name="password" autocomplete="off" required><br>
-	<input type="submit" value="Submit">
-	<input type="reset"  value="Reset">
-</form>
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+	$username = stripslashes($_POST['email']);
+	$username = mysqli_real_escape_string($con,$username);
+	$password = stripslashes($_POST['password']);
+	$password = mysqli_real_escape_string($con,$password);
+
+	$query = "SELECT username,password FROM account where username='$username' and password='$password'";
+	$result = mysqli_query($con,$query) or die(mysql_error());
+
+
+	 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+
+	  $rows = mysqli_num_rows($result);
+	
+	if($rows == 1){
+				$_SESSION['login_user'] = $username;
+				header( "location: /Profile" );
+	}else{
+		header( "location: /Login");
+		echo '';
+	}
+
+}
+?>
+
+  	 
+			<font color="red"><h3>Incorrect username/password.</h3></font>
+			<form action="" method="POST" id="login">
+			Email:<br>
+      <input type="email" name="email" required><br>
+			Password:<br>
+      <input type="password" name="password" autocomplete="off" required><br>
+			<input type="submit" value="Submit">
+			<input type="reset"  value="Reset">
+			</form>
 </section>
+
 <!-- Footer -->
+<div w3-container>
 <footer  class="w3-container w3-padding-32 w3-teal w3-center ">
 
  <p>Powered by Senior Projects Group #1</p>
 </footer>
-
 <script>
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
@@ -76,6 +112,8 @@ function myFunction() {
     }
 }
 </script>
+</div>
 
-</body>
+   </body>
+
 </html>

@@ -1,0 +1,160 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>FSCBOOKS</title>
+	<link rel='stylesheet' type = 'text/css' href = 'globalStyles.css'>
+	<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css'>
+
+</head>
+<body>
+
+  <header class='w3-container w3-teal w3-center' style='padding:25px 16px'>
+	<h1>FSCBOOK Exchange</h1>
+	<h3>A place to exchange books</h3>
+</header>
+<!-- Navbar -->
+<div class='w3-top'>
+  <div class='w3-bar w3-teal w3-card-2 w3-left-align w3-large'>
+    <a class='w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red' href='javascript:void(0);' onclick='myFunction()' title='Toggle Navigation Menu'><i class='fa fa-bars'></i></a>
+    <a href='Home' class='w3-bar-item w3-button w3-padding-large w3-hover-white'>Home</a>
+    <a href='Browse' class='w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white'>Browse</a>
+
+	<div class='w3-dropdown-hover'>
+
+		<a href='Profile' class='w3-bar-item w3-button w3-padding-large w3-white'>Profile</a>
+			<div class='w3-dropdown-content w3-bar-block w3-border'>
+			<a href='Profile' class='w3-bar-item w3-button w3-padding-large'>Profile</a>
+				<a class='w3-bar-item w3-button' href= 'Login'>Login</a>
+				<a class = 'w3-bar-item w3-button' href = 'SignUp'>Sign Up</a>
+				<a class='w3-bar-item w3-button' href='Logout'>Log Out</a>
+			</div>
+	</div>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id='navDemo' class='w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large'>
+    <a href='#' class='w3-bar-item w3-button w3-padding-large'>Link 1</a>
+    <a href='#' class='w3-bar-item w3-button w3-padding-large'>Link 2</a>
+    <a href='#' class='w3-bar-item w3-button w3-padding-large'>Link 3</a>
+    <a href='#' class='w3-bar-item w3-button w3-padding-large'>Link 4</a>
+  </div>
+</div>
+
+<section class = 'signup'>
+
+	<form action="Post" method='POST'>
+		<input type='hidden' name='act' value ='searchISBN'/>
+		Search by ISBN: <input type='text' name='isbnSearch'required>
+		<input type='submit'  value='search'>
+	</form>
+</section>
+
+<section class = 'signup'>
+  <h3>Enter book information.</h3>
+
+	<form action='Post' method='POST'>
+		<input type='hidden' name='act' value ='newBookPost'/>
+		ISBN:<br>
+		<input type='text' name='isbn' required><br>
+		Title: <br>
+		<input type='text' name='title' required><br>
+		Author:<br>
+		<input type='text' name='author' required><br>
+		Edition: <br>
+    <select name='edition' style='width: 100px;'>
+        <option value = 'null' disabled required>Edition</option>
+        <option value='1'>1st</option>
+        <option value='2'>2nd</option>
+        <option value='3'>3rd</option>
+        <option value='4'>4th</option>
+        <option value='5'>5th</option>
+        <option value='6'>6th</option>
+        <option value='7'>7th</option>
+        <option value='8'>8th</option>
+        <option value='9'>9th</option>
+        <option value='10'>10th</option>
+        <option value='11'>11th</option>
+        <option value='12'>12th</option>
+        <option value='13'>13th</option>
+        <option value='14'>14th</option>
+        <option value='15'>15th</option>
+        </select>
+    <br><br>Department: <br>
+    <select name='department' style='width: 100px;'>
+				<option value='BCS' disabled required>Department</option>
+				<option value='BCS'>BCS</option>
+				</select>
+
+    <br><br>Course Number: <br>
+    <select name='courseNumber' style='width: 100px;'>
+    		<option value='null' disabled required >Course Number</option>
+    		<option value='101'>101</option>
+        <option value='102'>102</option>
+        <option value='110'>110</option>
+        <option value='111'>111</option>
+        <option value='112'>112</option>
+        <option value='113'>113</option>
+        <option value='114'>114</option>
+        <option value='120'>120</option>
+        <option value='130'>130</option>
+        <option value='160'>160</option>
+        <option value='208'>208</option>
+        <option value='209'>209</option>
+        <option value='215'>215</option>
+        <option value='230'>230</option>
+        <option value='232'>232</option>
+        <option value='235'>235</option>
+        <option value='240'>240</option>
+        <option value='255'>255</option>
+        <option value='260'>260</option>
+        <option value='262'>262</option>
+        <option value='300'>300</option>
+        <option value='301'>301</option>
+        <option value='303'>303</option>
+        <option value='311'>311</option>
+        <option value='316'>316</option>
+        <option value='317'>317</option>
+        <option value='318'>318</option>
+        <option value='320'>320</option>
+        <option value='321'>321</option>
+        <option value='340'>340</option>
+        <option value='345'>345</option>
+        <option value='350'>350</option>
+        <option value='360'>360</option>
+        <option value='370'>370</option>
+        <option value='378'>378</option>
+        <option value='421'>421</option>
+        <option value='430W'>430W</option>
+        <option value='440'>440</option>
+        <option value='450'>450</option>
+    		</select>
+				<br>
+				<br>
+				Condition: <br>
+				<select name='condition' style='width: 100px;'>
+						<option  disabled required>Condition</option>
+						<option value= 0 >New</option>
+						<option value= 1 >Used</option>
+						</select>
+				<br><br>
+				Description: <br>
+				<input type='text' name='description'><br>
+				Price: <br>
+				$<input type='text' name='price' style='width: 75px;' required><br>
+
+	<input type='Submit'  value='Addbook'>
+	<input type='reset'  value='Reset'>
+</form>
+</section>
+
+<!-- Footer -->
+<footer  class='w3-container w3-padding-32 w3-teal w3-center '>
+
+ <p>Powered by Senior Projects Group #1</p>
+</footer>
+
+</body>
+</html>
